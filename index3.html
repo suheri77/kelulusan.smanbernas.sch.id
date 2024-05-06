@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+            text-align: center;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        input[type="text"], input[type="submit"] {
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="LOGO BERNAS 2.png" alt="">
+    <div class="container">
+        <form id="showForm">
+            <!-- Hanya input NISN -->
+            <input type="text" id="nisn" placeholder="NISN"><br>
+            <input type="submit" value="Show">
+        </form>
+        <div id="result" class="hidden"></div>
+    </div>
+
+    <script>
+        // Objek berisi data NISN dan nama
+        var users = [
+            { nisn: '0061431674', name: 'ADELLIA FEBRIANTI' },
+            { nisn: '0051824067', name: 'Alomsyah' },
+            { nisn: '0053892966', name: 'ARSYA HIDAYAH' },
+            { nisn: '0069284139', name: 'CUT FATIMAH AZZAHRA' },
+            { nisn: '0056788899', name: 'DENDRA DEFITRA REZA' },
+            { nisn: '0053566274', name: 'ELSA ASTANTI' },
+            { nisn: '0045878681', name: 'FAHRI PAMBUDI' },
+            { nisn: '0078319018', name: 'FINA LESTARI' },
+            { nisn: '0053237367', name: 'HAFIS LUTFI PUTERA ANSARI' },
+            { nisn: '0067836523', name: 'HAAFIZH ARIANTO' },
+            { nisn: '0068902192', name: 'ISHNA NURFAUZIAH' },
+            { nisn: '0068789954', name: 'MUHAMAD HABIL' },
+            { nisn: '3052093801', name: 'NANDA ARDIANSYAH LAROSA' },
+            { nisn: '0051871448', name: 'NANDA AULIA FEBRIANI' },
+            { nisn: '3056132859', name: 'NIKE HIDAYAH ' },
+            { nisn: '0067349439', name: 'NUR AISAH' },
+            { nisn: '0068830241', name: 'NUR HASANA' },
+            { nisn: '0060157048', name: 'NURHAMISA' },
+            { nisn: '0057187028', name: 'NURUL FITRAH ASSYAHROH' },
+            { nisn: '0057401730', name: 'OLIVIA WULANDARI' },
+            { nisn: 'nisn1', name: 'Alomsyah' },
+            { nisn: 'nisn1', name: 'Alomsyah' },
+            { nisn: 'nisn1', name: 'Alomsyah' },
+            { nisn: 'nisn2', name: 'Arsyah Hidayah' }
+            // Tambahkan data NISN dan nama lainnya di sini
+        ];
+
+        document.getElementById('showForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            var nisn = document.getElementById('nisn').value;
+
+            // Mencari NISN yang cocok dalam array
+            var user = users.find(function(user) {
+                return user.nisn === nisn;
+            });
+
+            if (user) {
+                document.getElementById('result').innerHTML = "Selamat " + user.name + ", Anda lulus dari SMAN BERNAS!";
+                document.getElementById('result').classList.remove('hidden');
+            } else {
+                document.getElementById('result').innerHTML = "Invalid NISN.";
+                document.getElementById('result').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
